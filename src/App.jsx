@@ -1,15 +1,27 @@
-import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import Hero from './components/Hero'
-import Login from './components/Login'
+import ProtectedRoute from './components/ProtectedRoute'
+import SignIn from './components/SignIn'
+import { UserAuthContextProvider } from './context/UserAuthContext'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
-    <div>
-      {/* <Hero/> */}
-      <Login/>
-    </div>
+        
+    <UserAuthContextProvider>
+      <Routes>
+        <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <Hero />
+                  </ProtectedRoute>
+                }
+              />
+        <Route path="/" element={<SignIn />} />
+      </Routes>
+    </UserAuthContextProvider>
   )
 }
 

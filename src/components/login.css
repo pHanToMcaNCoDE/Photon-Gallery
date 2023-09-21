@@ -2,6 +2,13 @@
 
 /** Styles for the 403 Page **/
 
+.pwd:focus ~ .input-text{
+    @apply text-purple-500 bg-white transform -translate-y-5;
+}
+.email:focus~.input-text {
+    @apply text-purple-500 bg-white transform -translate-y-5;
+}
+
 .particle-error,
 .permission_denied,
 #tsparticles {
