@@ -17,6 +17,19 @@ const Hero = () => {
 
     const [input, setInput] = useState('')
 
+    const [characters, updateCharacters] = useState(images)
+
+
+    const handleOnDragEnd = (result) => {
+
+        if(!result.destination) return;
+        const items = Array.from(characters);
+
+        const [reorderedItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderedItem);
+
+        updateCharacters(items)
+    }
 
 
     const {user, logOut} = useUserAuth();
@@ -65,12 +78,12 @@ const Hero = () => {
         <div className='w-full bg-neutral-900'>
                     <div className='max-w-[1200px] p-4 mx-auto'>
                         <h1 className='text-[2.5rem] text-purple-500 p-10 font-mono'>Gallary</h1>
-                        <DragDropContext>
+                        <DragDropContext onDragEnd={handleOnDragEnd}>
                             <Droppable droppableId='images'>
                                 {(provided) => (
                                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 font-mono' {...provided.droppableProps} ref={provided.innerRef}>
                                         {
-                                            images.filter(item => item.name.toLowerCase().includes(input)).map(({id, name, image}, index) => (
+                                            characters.filter(item => item.name.toLowerCase().includes(input)).map(({id, name, image}, index) => (
                                                 <Draggable draggable={true} key={id} draggableId={id} index={index}>
                                                     {(provided) => (
                                                         <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}
@@ -82,6 +95,7 @@ const Hero = () => {
                                                 </Draggable>
                                             ))
                                         }
+                                        {provided.placeholder}
                                     </div>
                                 )}
                             </Droppable>
