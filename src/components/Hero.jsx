@@ -11,6 +11,8 @@ import { images } from '../Data/Data'
 import { useUserAuth } from '../context/UserAuthContext'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Skeleton from '../components/skeleton/Skeleton'
+import axios from 'axios'
+import { confirmPasswordReset } from 'firebase/auth'
 
 const Hero = () => {
 
@@ -18,6 +20,22 @@ const Hero = () => {
     const [input, setInput] = useState('')
 
     const [characters, updateCharacters] = useState(images)
+    const [data, setData] = useState([])
+    const [load, setLoad] = useState(true)
+
+    useEffect(() => {
+        axios.get('../Data/Data')
+        .then((res) => {
+            setData(res.data)
+            setLoad(false)
+        })
+        .catch ((err) => {
+            console.log(err)
+            setLoad(false)
+        })
+
+        // console.log()
+    })
 
 
     const handleOnDragEnd = (result) => {
@@ -75,7 +93,13 @@ const Hero = () => {
 
         {/* <Gallary/> */}
 
-        <div className='w-full bg-neutral-900'>
+        {
+            load ? (
+                <div>
+                    <Skeleton/>
+                </div>
+            ): (
+                <div className='w-full bg-neutral-900'>
                     <div className='max-w-[1200px] p-4 mx-auto'>
                         <h1 className='text-[2.5rem] text-purple-500 p-10 font-mono'>Gallary</h1>
                         <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -102,7 +126,9 @@ const Hero = () => {
                         </DragDropContext>
                     </div>
                 
-        </div>
+                </div>
+            )
+        }
     </div>
   )
 }
