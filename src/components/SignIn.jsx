@@ -73,7 +73,7 @@ const SignIn = () => {
           <p className='text-[.8rem] font-mono tracking-wider '>Don't know what to do? <a className="font-mono tracking-wider text-[.8rem] text-blue-500 underline" href="https://github.com/pHanToMcaNCoDE/Photon-Gallery" target='_blank'>Click Here</a> 😁</p>
 
             <Button className='bg-purple-500 text-md font-mono text-white border border-purple-500 p-1 rounded-md my-2' type="Submit">
-              Log In
+              SIgn In
             </Button>
         </div>
         </Form>
