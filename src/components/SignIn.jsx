@@ -45,7 +45,7 @@ const SignIn = () => {
             
             <h1 className='text-xl md:text-2xl lg:text-3xl text-purple-500 font-mono px-1 py-3 tracking-widest'> SignIn!</h1>
             
-            {error && <div>{error}</div>}
+            {error && <div className="border border-rose-500 bg-rose-100 text-rose-500 p-2 my-2">{error}</div>}
           
         <div className='flex flex-col my-3'>
 
