@@ -71,9 +71,9 @@ const Hero = () => {
                                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 font-mono' {...provided.droppableProps} ref={provided.innerRef}>
                                         {
                                             images.filter(item => item.name.toLowerCase().includes(input)).map(({id, name, image}, index) => (
-                                                <Draggable key={id} draggableId={id} index={index}>
+                                                <Draggable draggable={true} key={id} draggableId={id} index={index}>
                                                     {(provided) => (
-                                                        <div {...provided.dragHandleProps} {...provided.dragHandleProps} ref={provided.innerRef}
+                                                        <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}
                                                         className='bg-zinc-800 cursor-pointer'>
                                                             <img className='w-full object-cover h-[370px]' src={image} alt={name}></img>
                                                             <p className='text-white p-2'>{name}</p>  
