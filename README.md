@@ -17,7 +17,7 @@ A responsive image gallery that allows users to drag and drop images in an order
 
 4. Search Function: This was implemented by filtering the images in the gallery based on the name or tag typed in the given search in the input field.
 
-# Errors Encountered
+# Errors Encountered:
 
 1. "Unable to find draggable with id: {DataID}": This error was resolved by converting the draggable id data key of each item in the gallery to string.
     
@@ -26,7 +26,7 @@ A responsive image gallery that allows users to drag and drop images in an order
 2. Items not dragging: Ensure that you type in the draggable attribute and set it to true. Syntax:
    draggable={true}
 
-3. Items not dropping: You must create a useState that stores the current position of an item that is picked. Then updates are made to the current status of the item. Also, ensure to add {provided.placeholder} to know the last item in the gallery (I really don't know how else to explain this 🤷🏽‍♂️).
+3. Items not dropping: You must create a state that stores the current position of an item that is picked. Then updates are made to the current status of the item. Also, ensure to add {provided.placeholder} to know the last item in the gallery (I really don't know how else to explain this 🤷🏽‍♂️).
 
 
 
