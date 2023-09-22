@@ -1,4 +1,4 @@
-# User SignUo Requirements
+# User Sign-Up Requirements
 
 1. email: user@example.com
 2. password: 1Password
